@@ -5,11 +5,14 @@
 \NeedsTeXFormat{LaTeX2e}[1995/06/01]
 \ProvidesClass{uithesis}[1999/04/16 Univ. of Iowa Thesis Class]
 % ChangeLog
-% December 19, 2013 Andrew Reynolds AJR (andrew.j.reynolds@gmail.com)
+% January 15, 2017 Nick Evans <nicholas-evans@uiowa.edu>
+%    * Public abstracts are now required for all theses/dissertations
+%
+% December 19, 2013 Andrew Reynolds AJR <andrew.j.reynolds@gmail.com>
 %    * Fixed appendix line in table of contents.  
 %      Made phd abstract optional, since it is no longer required.
 %
-% December 31, 2012 Duckki Oe (duckki-oe@uiowa.edu)
+% December 31, 2012 Duckki Oe <duckki-oe@uiowa.edu>
 %    * Updated this sytle conforming the July 2012 standard.
 %      I made some formatting changes in TOC, figure, and
 %      bibliography, so you can code as natural as you can and
@@ -534,6 +537,7 @@
         \ackpg
      }{}
      \abstractpg			% (internal) abstract (optional)
+     \pubabstractpg
      %\setcounter{tocdepth}{6}
      \setcounter{tocdepth}{3}	% changed by Duckki
      \tableofcontents
@@ -678,6 +682,7 @@
 \def\copyrightyear#1{\gdef\@copyrightyear{#1}}
 %\def\abstractfile#1{\setboolean{abtitlepage}{true}\gdef\@abstractfile{#1}}
 \def\Abstract#1{\setboolean{abtitlepage}{true}\gdef\@abstracttext{#1}}
+\def\publicabstract#1{\gdef\@publicabstract{#1}}    % added by NJE
 \def\dedication#1{\gdef\@dedication{#1}}
 \def\epigraph#1{\gdef\@epigraph{#1}}
 \def\acknowledgements#1{\setboolean{ackpage}{true}\gdef\@acknowledgements{#1}}
@@ -861,6 +866,32 @@
    }%
    {}%
 }
+
+
+
+%
+% PUBABSTRACTPG - command to add the public abstract page
+%
+% Thesis Manual (1/15/2017):
+% ``
+% * A Public Abstract (``Public Abstract'') is required for all students
+% * Text should be top-aligned, double-spaced, and with each paragraph indented
+% ''
+%
+\newcommand{\pubabstractpg}{%
+    \vspace*{\uitchapadd}%
+% Pain in the ass formatting: the text of the public abstract has to
+% appear 4 singlespace lines below the heading, rather than 2 like in
+% the rest of the front matter.
+    {\singlespace\parindent \z@ \reset@font \normalize \bfseries
+     \centering PUBLIC ABSTRACT\par \nobreak \vskip 2\li }
+    \doublespace
+    \@publicabstract
+    \vfill
+    \singlespace\normalsize
+    \newpage
+}
+
 
 
 %
