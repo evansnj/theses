@@ -752,6 +752,7 @@
   {%
 	\thispagestyle{empty}%
 	\vspace*{\fill}
+    \doublespace
 	\begin{center}
 	   Copyright by\\
 	   \uppercase\expandafter{\@author}\\
