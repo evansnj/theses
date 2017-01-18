@@ -883,7 +883,7 @@
 % Pain in the ass formatting: the text of the public abstract has to
 % appear 4 singlespace lines below the heading, rather than 2 like in
 % the rest of the front matter.
-    {\singlespace\parindent \z@ \reset@font \normalize \bfseries
+    {\singlespace\parindent \z@ \reset@font \normalsize \bfseries
      \centering PUBLIC ABSTRACT\par \nobreak \vskip 2\li }
     \doublespace
     \@publicabstract
